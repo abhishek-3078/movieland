@@ -31,7 +31,7 @@ const MoviePage = (props) => {
   return (
     <>
         {  
-            !movie?(<div>Loading...</div>):
+            !movie?(<div className={styles.subhead}>Loading...</div>):
         (
             <div>
             <h2 className={styles.head}>

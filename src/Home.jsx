@@ -5,12 +5,18 @@ import MovieCard from './movieCard'
 const Home = () => {
     const API_URL=process.env.REACT_APP_API_URL
     const [movies,setMovies]=useState([])
+    const [loading,setLoading]=useState("")
     const [searchTerm,setSearchTerm]=useState('')
     const searchMovies=async (title)=>{
+        setLoading("Loading...")
+        setMovies([])
         const response=await fetch(`${API_URL}&s=${title}`)
         const data=await response.json()
-        if(data.Error) return
-        console.log(data)
+        if(data.Error){
+            setLoading("No movies found")
+            return;
+        }
+        // console.log(data)
         setMovies(data.Search)
     }
 
@@ -42,7 +48,7 @@ const Home = () => {
         }</div>
     ):(
         <div className="empty">
-            <h2>No movies found</h2>
+            <h2>{loading}</h2>
         </div>
     )
 
