@@ -1,0 +1,44 @@
+*{
+    color: white;
+}
+.minor{
+    font-size: 1rem;
+}
+
+.head{
+    color: white;
+    text-align: center;
+    font-size: 2rem;
+}
+.subhead{
+    font-size: 1.3rem;
+    color:white;
+    text-align: center;
+}
+.left{
+    border: 2px solid white;
+    width: 60vw;
+}
+
+
+.container{
+    display: flex;
+    justify-content: center;
+}
+
+.meta{
+    padding: 20px;
+}
+@media (max-width:700px){
+    .container{
+        margin-top: 20px;
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+        gap:20px;
+    }
+    .left ,.right{
+        width: auto;
+    }
+    
+}
