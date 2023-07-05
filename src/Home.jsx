@@ -1,10 +1,7 @@
 import React,{useState} from 'react'
-
 import searchIcon from './search.svg'
 import MovieCard from './movieCard'
 
-const movie1=
-{Title: 'Dangal', Year: '2016', imdbID: 'tt5074352', Type: 'movie', Poster: 'https://m.media-amazon.com/images/M/MV5BMTQ4MzQzMzM2Nl5BMl5BanBnXkFtZTgwMTQ1NzU3MDI@._V1_SX300.jpg'}
 const Home = () => {
     const API_URL=process.env.REACT_APP_API_URL
     const [movies,setMovies]=useState([])
@@ -29,7 +26,7 @@ const Home = () => {
             onChange={(e)=>{setSearchTerm(e.target.value)
             }}
             onKeyDown={(e)=>{
-                if(e.key=="Enter"){
+                if(e.key==="Enter"){
                     searchMovies(searchTerm)
                 }
             }}/>

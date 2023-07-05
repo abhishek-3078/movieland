@@ -1,5 +1,5 @@
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState,useCallback } from 'react'
 import { useParams } from 'react-router-dom';
 import styles from './MoviePage.module.css'
 const MOVIE_URL=process.env.REACT_APP_MOVIE_URL
@@ -8,16 +8,22 @@ const MoviePage = (props) => {
     console.log("hello")
     const [movie,setMovie]=useState(null)
     const { id } = useParams();
-    const getMovie=async()=>{
-        const response=await fetch(MOVIE_URL+`&i=${id}`);
-        const data=await response.json()
-        console.log(data)
-        setMovie(data)
-    }
+    const getMovie = useCallback(async () => {
+      const response = await fetch(MOVIE_URL + `&i=${id}`);
+      const data = await response.json();
+      console.log(data);
+      setMovie(data);
+    }, [id]);
+    // const getMovie=async()=>{
+    //     const response=await fetch(MOVIE_URL+`&i=${id}`);
+    //     const data=await response.json()
+    //     console.log(data)
+    //     setMovie(data)
+    // }
     useEffect(()=>{
         getMovie()
 
-    },[])
+    },[getMovie])
 
     
     
